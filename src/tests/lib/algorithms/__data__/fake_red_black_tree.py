@@ -1,32 +1,35 @@
-'''
-.Insert 1000
-.Expect as root node
+r'''
+Program: Insert Red-Black Tree
+Import: imgrass_horizon.lib.x:Demo
+Begin
+    initialize empty tree
 
-.Insert 500
-.Expect:
-    .Search left branch of 1000
-    .As leaf node
+    insert 1000
+    expect | as {root} node
 
-.Insert 1500
-.Expect:
-    .Search right branch of 1000
-    .As leaf node
+    insert 500
+    expect |
+        search {left} branch of {1000}
+        as {leaf} node
 
-.Insert 250, 1750, 1250, 125, 65, 2000, 95, 2500, 350, 750, 400, 380
+    insert_seq := 1500, 250, 1750, 1250, 125, 65, 2000, 95, 2500, 350, 750, \
+                  400, 380
 
-.Validate:
-    .(Is valid red-black tree)
+    insert | $insert_seq
 
-.Insert 390
-.Expect:
-    .Search left branch of 1000
-    .Search right branch of 250
-    .Search left branch of 500
-    .Search right branch of 380
-    .Search left branch of 400
-    .As leaf node
-    .Fixup red-uncle RL
-    .Fixup black-uncle RL
+    validate | is valid red-black tree
+
+    insert 390
+    expect |
+        search {left} branch of {1000}
+        search {right} branch of {250}
+        search {left} branch of {500}
+        search {right} branch of {380}
+        search {left} branch of {400}
+        as {leaf} node
+        fixup {red-uncle} {RL}
+        fixup {black-uncle} {RL}
+End
 '''
 
 
